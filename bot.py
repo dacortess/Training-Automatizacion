@@ -1,8 +1,9 @@
 from random import randint
 from datetime import datetime
+from dotenv import load_dotenv
 import pandas as pd
 import pywhatkit
-import os
+import os, time
 
 
 def get_random_news() -> str:
@@ -52,9 +53,17 @@ def get_random_news() -> str:
 
     return msg
 
+load_dotenv()
+
 #Configuracion tiempos envio
 h, m = datetime.now().strftime('%H %M').split()
+d = datetime.today().weekday()
 
 for i in range(30):
+    if d > 4:
+        time.sleep(3600*60**24)
+        d = (d+1)%7
+        continue
     msg = get_random_news()
-    pywhatkit.sendwhatmsg_to_group("ByQzurLTzEVLsrTMOJ8KTE", msg, int(h), int(m)+2, 60, True, 5)
+    pywhatkit.sendwhatmsg_to_group(os.environ.get("WP_GROUP_ID"), msg, int(h), int(m)+2, 60, True, 5)
+    d = (d+1)%7

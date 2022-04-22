@@ -1,7 +1,8 @@
-python 3.x
+python
 pandas
 openpyxl
 urllib
 regex
 pywhatkit
 flask
+dotenv

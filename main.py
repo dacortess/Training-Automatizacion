@@ -35,4 +35,7 @@ for new in drv.news_mipymes:
     index += 1
 
 #Guardado de dataframe como excel
+print("Creando Excel...")
 df.to_excel(r'data/scraped_data.xlsx', index = True)
+df.to_excel(r'data/scraped_data_bk.xlsx', index = True)
+print("Excel creado")

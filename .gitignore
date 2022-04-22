@@ -1,4 +1,5 @@
 .vscode/
 __pycache__/
 myenv/
+.env
 PyWhatKit_DB.txt
